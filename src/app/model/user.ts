@@ -8,9 +8,9 @@ export class User {
 }
 
 enum Plans {
-    Gain = "Planuje przytyć",
-    Stay = "Planuje utrzymać wagę",
-    Loose = "Planuję schudnąć"
+    Gain = "Chcę przytyć",
+    Stay = "Chcę utrzymać wagę",
+    Loose = "Chcę schudnąć"
 }
 
 enum PhisicalActivity {

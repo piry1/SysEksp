@@ -1,3 +1,84 @@
-<p>
-  bmr works!
-</p>
+<div class="container" style="padding: 30px">
+
+  <div class="card border-primary mb-3">
+    <h3 class="card-header">Twoje zapotrzebowanie kaloryczne (BMR)</h3>
+    <div class="card-body">
+      <!--img style="height: 200px; width: 200px; display: block;" src="/assets/pictures/blender.png" alt="Card image"-->
+      <div class="row" style="text-align: center">
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="/assets/pictures/measuring-tape.png" width="140" height="140">
+        </div>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="/assets/pictures/proteins.png" width="140" height="140">
+        </div>
+        <!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="rounded-circle" src="/assets/pictures/fast-food.png" width="140" height="140">
+        </div>
+        <!-- /.col-lg-4 -->
+      </div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Kalkulator kalorii - oblicz swoje dzienne zapotrzebowanie kaloryczne</h5>
+      <h6 class="card-subtitle text-muted">Dowiedz się co to jest BMR kalkulator oraz o czym informuje współczynnik BMR. Poznaj swoje zapotrzebowanie energetyczne
+        – i odżywiaj się tak jak należy.
+        <br>
+        <br> Trenując musisz zdawać sobie sprawę jakie jest Twoje dzienne zapotrzebowanie na kalorie oraz dieta. Do tego przyda
+        Ci się licznik kalorii aby wiedzieć ile kalorii dziennie powinieneś spożywać a tabela kalorii, uświadomi Ci np. ile
+        kalorii ma banan, pizza, chleb, bułka czy zupa. Służy do tego nasz kalkulator spalania kalorii oraz kalkulator BMR.
+        Możesz wykorzystywać go każdego dnia lub okresowo aby obliczać dokładnie swoje zapotrzebowanie kaloryczne.</h6>
+    </div>
+  </div>
+
+  <div class="card border-primary">
+    <div class="card-body">
+
+      <legend>Płeć:</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Mężczyzna
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">Kobieta
+        </label>
+      </div>
+
+      <div class="form-group">
+        <legend>Masa ciała:</legend>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="kg">
+      </div>
+
+      <div class="form-group">
+        <legend>Wiek:</legend>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="lata">
+      </div>
+
+
+      <div class="form-group">
+        <legend>Wzrost:</legend>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="cm">
+      </div>
+
+      <legend>Aktywność fizyczna:</legend>
+      <select class="form-control" id="exampleSelect1">
+        <option value="" disabled selected>Wybierz rodzaj aktywności fizycznej</option>
+        <option *ngFor="let activity of activities">{{activity}}</option>
+      </select>
+
+      <legend>Planuje:</legend>
+      <select class="form-control" id="exampleSelect1">
+        <option value="" disabled selected>Wybierz co chcesz osignąć</option>
+        <option *ngFor="let plan of plans">{{plan}}</option>
+      </select>
+
+    </div>
+
+    <div class="card-body">
+      <button class="btn btn-primary btn-lg btn-block">Przelicz wskaźnik BMR</button>
+    </div>
+  </div>
+
+</div>
