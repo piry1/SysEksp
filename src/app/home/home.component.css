@@ -1,0 +1,14 @@
+.jumbotron{
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2), 
+        rgba(255, 255, 255, 0.2)
+      ),
+     url('/assets/pictures/bd1.jpg');
+    color: white;
+    font-size: 14pt;
+    border-radius: 0px;
+}
+
+h1{
+    color: white;
+}
