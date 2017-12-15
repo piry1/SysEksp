@@ -37,47 +37,52 @@
       <legend>Płeć:</legend>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Mężczyzna
+          <input type="radio" class="form-check-input" [value]="0" [(ngModel)]="user.Gender" checked="">Mężczyzna
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">Kobieta
+          <input type="radio" class="form-check-input" [value]="1" [(ngModel)]="user.Gender">Kobieta
         </label>
       </div>
 
       <div class="form-group">
-        <legend>Masa ciała:</legend>
-        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="kg">
+        <legend>Masa ciała (kg):</legend>
+        <input type="number" class="form-control" min="1" [(ngModel)]="user.Weight" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="kg">
       </div>
 
       <div class="form-group">
-        <legend>Wiek:</legend>
-        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="lata">
+        <legend>Wiek (lata):</legend>
+        <input type="number" min="1" class="form-control" id="exampleInputEmail1" [(ngModel)]="user.Age" aria-describedby="emailHelp" placeholder="lata">
       </div>
 
+      <div class="form-group">
+        <legend>Wzrost (cm):</legend>
+        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.Height" aria-describedby="emailHelp" placeholder="cm">
+      </div>
 
       <div class="form-group">
-        <legend>Wzrost:</legend>
-        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="cm">
+        <legend>Masa mięśniowa (kg):</legend>
+        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.MuscleMass" aria-describedby="emailHelp" placeholder="cm">
+        <small>Parametr opcjonalny</small>
       </div>
 
       <legend>Aktywność fizyczna:</legend>
-      <select class="form-control" id="exampleSelect1">
+      <select [(ngModel)]="user.PhisicalActivity" class="form-control" id="exampleSelect1">
         <option value="" disabled selected>Wybierz rodzaj aktywności fizycznej</option>
-        <option *ngFor="let activity of activities">{{activity}}</option>
+        <option *ngFor="let activity of activities; let i = index" [value]="i">{{activity}}</option>
       </select>
 
       <legend>Planuje:</legend>
-      <select class="form-control" id="exampleSelect1">
-        <option value="" disabled selected>Wybierz co chcesz osignąć</option>
-        <option *ngFor="let plan of plans">{{plan}}</option>
+      <select class="form-control" [(ngModel)]="user.Plans" id="exampleSelect1">
+        <option value='-1' disabled selected>Wybierz co chcesz osignąć</option>
+        <option *ngFor="let plan of plans; let i = index" [value]='i'>{{plan}}</option>
       </select>
 
     </div>
 
     <div class="card-body">
-      <button class="btn btn-primary btn-lg btn-block">Przelicz wskaźnik BMR</button>
+      <button (click)="calcBmr()" class="btn btn-primary btn-lg btn-block">Przelicz wskaźnik BMR</button>
     </div>
   </div>
 

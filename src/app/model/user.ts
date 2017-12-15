@@ -1,22 +1,28 @@
 export class User {
-    Gender: string;
-    Age: number;
-    Weight: number;
-    Height: number;
-    PhisicalActivity: PhisicalActivity;
-    Plans: Plans;
+    Gender: Gender = Gender.Male;
+    Age: number = 0;
+    Weight: number = 0;
+    Height: number = 0;
+    PhisicalActivity: PhisicalActivity = PhisicalActivity.None;
+    Plans: Plans = Plans.Stay;
+    MuscleMass = 0;
 }
 
-enum Plans {
-    Gain = "Chcę przytyć",
-    Stay = "Chcę utrzymać wagę",
-    Loose = "Chcę schudnąć"
+export enum Plans {
+    Gain = 0,
+    Stay,
+    Loose
 }
 
-enum PhisicalActivity {
-    None = "Znikoma (brak ćwiczeń, praca siedząca, szkoła)",
-    Small = "Bardzo mała (ćwiczenia raz na tydzień, praca lekka)",
-    Normal = "Umiarkowana (ćwiczenia 2 razy w tygodniu - średniej intensywności)",
-    Big = "Duża (dość ciężki trening kilka razy w tygodniu)",
-    VerryBig = "Bardzo duża (przynajmniej 4 ciężkie treniengi w tygodniu, praca fizyczna)"
+export enum PhisicalActivity {
+    None = 0,
+    Small,
+    Normal,
+    Big,
+    VerryBig
+}
+
+export enum Gender {
+    Male,
+    Female
 }
