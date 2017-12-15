@@ -32,22 +32,8 @@ export class BmrComponent implements OnInit {
   }
 
   calcBmr() {
-    //console.log("Calc BMR");
-    //console.log(this.user);
 
-    var bmrHarris = this.countBmrHarris();
-    var bmrMifflin = this.countBmrMifflin();
-    var bmrMcArdle = this.countMcArdle();
-
-    if (bmrMcArdle != 0)
-      User.Bmr = (bmrHarris + bmrMcArdle + bmrMifflin) / 3;
-    else
-      User.Bmr = (bmrHarris + bmrMifflin) / 2;
-
-    User.ProposedMass = this.countLorentz();
-
-    User.Cpm = this.countCpm(User.Bmr, Paramiters.PAL[this.user.PhisicalActivity])
-
+    this.user.countAllParams();
 
     console.log(User.Bmr);
     console.log(User.Cpm);
