@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Gender, PhisicalActivity, Plans } from '../model/user';
-import { listenerCount } from 'cluster';
+import { User, Gender, PhisicalActivity, Plans, Paramiters } from '../model/user';
 
 @Component({
   selector: 'app-bmr',
@@ -12,14 +11,13 @@ export class BmrComponent implements OnInit {
 
   constructor() { }
 
-  private Bmr = 0;
-
   activities: string[] = [
-    "Znikoma (brak ćwiczeń, praca siedząca, szkoła)",
+    "Bezruch np. dla pacjenta choreg leżącego w łóżku ",
     "Bardzo mała (ćwiczenia raz na tydzień, praca lekka)",
     "Umiarkowana (ćwiczenia 2 razy w tygodniu - średniej intensywności)",
     "Duża (dość ciężki trening kilka razy w tygodniu)",
-    "Bardzo duża (przynajmniej 4 ciężkie treniengi w tygodniu, praca fizyczna)"
+    "Bardzo duża (przynajmniej 4 ciężkie treniengi w tygodniu, praca fizyczna)",
+    "Wyczynowe uprawianie sportu"
   ];
 
   plans: string[] = [
@@ -42,11 +40,18 @@ export class BmrComponent implements OnInit {
     var bmrMcArdle = this.countMcArdle();
 
     if (bmrMcArdle != 0)
-      this.Bmr = (bmrHarris + bmrMcArdle + bmrMifflin) / 3;
+      User.Bmr = (bmrHarris + bmrMcArdle + bmrMifflin) / 3;
     else
-      this.Bmr = (bmrHarris + bmrMifflin) / 2;
+      User.Bmr = (bmrHarris + bmrMifflin) / 2;
 
-    console.log(this.Bmr);
+    User.ProposedMass = this.countLorentz();
+
+    User.Cpm = this.countCpm(User.Bmr, Paramiters.PAL[this.user.PhisicalActivity])
+
+
+    console.log(User.Bmr);
+    console.log(User.Cpm);
+    console.log(User.ProposedMass);
   }
 
   countBmrHarris() {
@@ -88,6 +93,21 @@ export class BmrComponent implements OnInit {
 
   countMcArdle() {
     return 370 + (21.6 * this.user.MuscleMass);
+  }
+
+  countLorentz() {
+    var user = this.user;
+    var result = 0;
+    if (user.Gender == Gender.Male)
+      result = user.Height - 100 - (user.Height - 150) / 4;
+    else if (user.Gender == Gender.Female)
+      result = user.Height - 100 - (user.Height - 150) / 2;
+
+    return result;
+  }
+
+  countCpm(bmr: number, pal: number): number {
+    return bmr * pal;
   }
 
 }

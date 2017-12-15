@@ -5,7 +5,14 @@ export class User {
     Height: number = 0;
     PhisicalActivity: PhisicalActivity = PhisicalActivity.None;
     Plans: Plans = Plans.Stay;
-    MuscleMass = 0;
+    MuscleMass: number = 0;
+    static Bmr: number = 0;
+    static ProposedMass: number = 0;
+    static Cpm: number = 0;
+}
+
+export class Paramiters {
+    static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2, 3];
 }
 
 export enum Plans {
@@ -19,7 +26,8 @@ export enum PhisicalActivity {
     Small,
     Normal,
     Big,
-    VerryBig
+    VerryBig,
+    Extreme
 }
 
 export enum Gender {
