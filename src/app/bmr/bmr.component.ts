@@ -8,7 +8,9 @@ import { User, Gender, PhisicalActivity, Plans, Paramiters } from '../model/user
 })
 export class BmrComponent implements OnInit {
 
-
+  public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+  public doughnutChartData:number[] = [350, 450, 100];
+  public doughnutChartType:string = 'doughnut';
   constructor() { }
 
   activities: string[] = [

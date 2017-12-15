@@ -48,22 +48,26 @@
 
       <div class="form-group">
         <legend>Masa ciała (kg):</legend>
-        <input type="number" class="form-control" min="1" [(ngModel)]="user.Weight" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="kg">
+        <input type="number" class="form-control" min="1" [(ngModel)]="user.Weight" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="kg">
       </div>
 
       <div class="form-group">
         <legend>Wiek (lata):</legend>
-        <input type="number" min="1" class="form-control" id="exampleInputEmail1" [(ngModel)]="user.Age" aria-describedby="emailHelp" placeholder="lata">
+        <input type="number" min="1" class="form-control" id="exampleInputEmail1" [(ngModel)]="user.Age" aria-describedby="emailHelp"
+          placeholder="lata">
       </div>
 
       <div class="form-group">
         <legend>Wzrost (cm):</legend>
-        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.Height" aria-describedby="emailHelp" placeholder="cm">
+        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.Height" aria-describedby="emailHelp"
+          placeholder="cm">
       </div>
 
       <div class="form-group">
         <legend>Masa mięśniowa (kg):</legend>
-        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.MuscleMass" aria-describedby="emailHelp" placeholder="cm">
+        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.MuscleMass" aria-describedby="emailHelp"
+          placeholder="cm">
         <small>Parametr opcjonalny</small>
       </div>
 
@@ -84,6 +88,33 @@
     <div class="card-body">
       <button (click)="calcBmr()" class="btn btn-primary btn-lg btn-block">Przelicz wskaźnik BMR</button>
     </div>
+  </div>
+
+
+
+
+  <div class="card border-primary mb-3">
+    <h3 class="card-header">Wyniki</h3>
+    <div class="card-body">
+
+      <div style="display: block">
+        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-sm-6">
+          <button class="btn btn-warning btn-lg btn-block">Wstecz</button>
+        </div>
+        <div class="col col-sm-6">
+          <button class="btn btn-info btn-lg btn-block">Dalej</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
