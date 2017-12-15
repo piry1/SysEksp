@@ -88,7 +88,7 @@ export class User {
 }
 
 export class Paramiters {
-    static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2, 3];
+    static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2.3];
 }
 
 export enum Plans {
