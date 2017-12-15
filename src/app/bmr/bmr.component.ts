@@ -8,9 +8,10 @@ import { User, Gender, PhisicalActivity, Plans, Paramiters } from '../model/user
 })
 export class BmrComponent implements OnInit {
 
-  public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-  public doughnutChartData:number[] = [350, 450, 100];
-  public doughnutChartType:string = 'doughnut';
+  public doughnutChartLabels: string[] = ['Białko', 'Węglowodany', 'Tłuszcze'];
+  public doughnutChartData: number[] = [1, 1, 1];
+  public doughnutChartType: string = 'doughnut';
+
   constructor() { }
 
   activities: string[] = [
@@ -29,6 +30,7 @@ export class BmrComponent implements OnInit {
   ]
 
   user = new User();
+  canShowResults: boolean = false;
 
   ngOnInit() {
   }
@@ -36,10 +38,18 @@ export class BmrComponent implements OnInit {
   calcBmr() {
 
     this.user.countAllParams();
-
+    this.showResults();
     console.log(User.Bmr);
     console.log(User.Cpm);
     console.log(User.ProposedMass);
+  }
+
+  showResults() {
+    this.canShowResults = true;
+  }
+
+  hideResults() {
+    this.canShowResults = false;
   }
 
 }

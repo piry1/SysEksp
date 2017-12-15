@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="card border-primary">
+  <div *ngIf="!canShowResults" class="card border-primary">
     <div class="card-body">
 
       <legend>Płeć:</legend>
@@ -93,7 +93,7 @@
 
 
 
-  <div class="card border-primary mb-3">
+  <div *ngIf="canShowResults" class="card border-primary mb-3">
     <h3 class="card-header">Wyniki</h3>
     <div class="card-body">
 
@@ -107,10 +107,13 @@
     <div class="card-body">
       <div class="row">
         <div class="col col-sm-6">
-          <button class="btn btn-warning btn-lg btn-block"><i class="fa fa-arrow-left" aria-hidden="true"></i> Wstecz</button>
+          <button (click)="hideResults()" class="btn btn-warning btn-lg btn-block">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Wstecz</button>
         </div>
         <div class="col col-sm-6">
-          <button class="btn btn-info btn-lg btn-block">Dalej <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          <button class="btn btn-info btn-lg btn-block">Dalej
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </div>
