@@ -95,13 +95,26 @@
 
   <div *ngIf="canShowResults" class="card border-primary mb-3">
     <h3 class="card-header">Wyniki</h3>
+
     <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-hover">
+            <tbody>
+              <tr *ngFor="let result of results">
+                <th scope="row">{{result.name}}</th>
+                <td>{{result.value}}</td>
+              </tr>
+            </tbody>
+          </table>
 
-      <div style="display: block">
-        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+
+        <div style="display: block" class="col-md-6">
+          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
       </div>
-
     </div>
 
     <div class="card-body">

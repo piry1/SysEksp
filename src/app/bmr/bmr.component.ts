@@ -29,6 +29,13 @@ export class BmrComponent implements OnInit {
     "Planuję schudnąć"
   ]
 
+  results: { readonly name: string, value: string }[] = [
+    { "name": "BMR", "value": "" },
+    { "name": "CPM", "value": "" },
+    { "name": "Aktualna masa", "value": "" },
+    { "name": "Proponowana masa", "value": "" }
+  ];
+
   user = new User();
   canShowResults: boolean = false;
 
@@ -38,6 +45,12 @@ export class BmrComponent implements OnInit {
   calcBmr() {
 
     this.user.countAllParams();
+
+    this.results[0].value = User.Bmr.toFixed() + " kcal";
+    this.results[1].value = User.Cpm.toFixed() + " kcal";
+    this.results[2].value = this.user.Weight.toFixed(1) + " kg";
+    this.results[3].value = User.ProposedMass.toFixed(1) + " kg";
+
     this.showResults();
     console.log(User.Bmr);
     console.log(User.Cpm);
