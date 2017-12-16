@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BmrComponent } from './bmr/bmr.component';
+import { DietComponent } from './diet/diet.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BmrComponent } from './bmr/bmr.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    BmrComponent
+    BmrComponent,
+    DietComponent
   ],
   imports: [
     BrowserModule,
