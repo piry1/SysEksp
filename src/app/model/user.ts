@@ -29,7 +29,7 @@ export class User {
     }
 
     public countCpm(): number {
-        User.Cpm = User.Bmr * Paramiters.PAL[this.PhisicalActivity];
+        User.Cpm = User.Bmr * Paramiters.PAL[this.PhisicalActivity] * Paramiters.kPAL[this.Plans];
         return User.Cpm;
     }
 
@@ -38,8 +38,8 @@ export class User {
         var bmrMifflin = this.countBmrMifflin();
         var bmrMcArdle = this.countMcArdle();
 
-        if (bmrMcArdle != 0)
-            User.Bmr = (bmrHarris + bmrMcArdle + bmrMifflin) / 3;
+        if (this.MuscleMass != 0)
+            User.Bmr = (2 * bmrHarris + 2 * bmrMcArdle + bmrMifflin) / 5 + 100;
         else
             User.Bmr = (bmrHarris + bmrMifflin) / 2;
 
@@ -89,6 +89,7 @@ export class User {
 
 export class Paramiters {
     static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2.3];
+    static readonly kPAL: number[] = [1.13, 1, 0.87];
 }
 
 export enum Plans {
