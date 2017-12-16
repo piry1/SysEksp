@@ -1,5 +1,6 @@
 <div class="container" style="padding: 30px">
 
+  <!-- Opis -->
   <div class="card border-primary mb-3">
     <h3 class="card-header">Dobieranie odpowiedniej diety</h3>
     <div class="card-body">
@@ -27,4 +28,38 @@
       </h6>
     </div>
   </div>
+
+  <!-- Ankieta -->
+  <div *ngIf="!canShowResults" class="card border-primary">
+
+
+    <div class="card-body">
+      <button (click)="showResults()" class="btn btn-secondary btn-lg btn-block">Wyznacz dietę</button>
+    </div>
+  </div>
+
+  <!-- Wyniki -->
+  <div *ngIf="canShowResults" class="card border-primary mb-3">
+    <h3 class="card-header">Wyniki</h3>
+
+    <div class="card-body">
+
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col col-sm-6">
+          <button (click)="hideResults()" class="btn btn-warning btn-lg btn-block">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Wstecz</button>
+        </div>
+        <div class="col col-sm-6">
+          <button routerLink="//" class="btn btn-info btn-lg btn-block">Dalej
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>

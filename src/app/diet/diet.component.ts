@@ -8,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class DietComponent implements OnInit {
 
   constructor() { }
-
+  canShowResults: boolean = false;
   ngOnInit() {
   }
 
+  showResults() {
+    this.canShowResults = true;
+  }
+
+  hideResults() {
+    this.canShowResults = false;
+  }
 }
