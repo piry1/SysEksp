@@ -8,7 +8,29 @@ import { Component, OnInit } from '@angular/core';
 export class DietComponent implements OnInit {
 
   constructor() { }
+
   canShowResults: boolean = false;
+
+  scale: string[] = [
+    "Mało",
+    "Średnio",
+    "Dużo"
+  ];
+
+  foodPreferences: string[] = [
+    "Jem wszystko",
+    "Wegetarianin",
+    "Weganin"
+  ];
+
+  allergies: string[] = [
+    "jajka",
+    "mleko",
+    "orzeszki ziemne i inne orzechy",
+    "soja",
+    "owoce morza"
+  ];
+
   ngOnInit() {
   }
 

@@ -8,3 +8,7 @@ body {
     margin-bottom: 60px; /* Margin bottom by footer height */
     margin-top: 55px;
 }
+
+legend{
+    margin-top: 5px;
+}

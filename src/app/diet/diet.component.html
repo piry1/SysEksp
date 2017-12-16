@@ -32,7 +32,40 @@
   <!-- Ankieta -->
   <div *ngIf="!canShowResults" class="card border-primary">
 
+    <div class="card-body">
 
+      <legend>Preferencje żywieniowe:</legend>
+      <select class="form-control" id="exampleSelect1">
+        <option *ngFor="let pref of foodPreferences; let i = index" [value]="i">{{pref}}</option>
+      </select>
+
+      <legend>Alergie</legend>
+      <div class="form-check" *ngFor="let allergy of allergies; let i = index">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [value]="i"> {{allergy}}
+        </label>
+      </div>
+
+      <legend>Ilość wolnego czasu:</legend>
+      <p class="coment">Ilość czasu jaką jesteś w stanie przeznaczyć na przygotowanie posiłków</p>
+      <select class="form-control" id="exampleSelect1">
+        <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
+      </select>
+
+      <legend>Gotówka:</legend>
+      <p class="coment">Jak wiele jesteś w stanie przeznaczyć na jedzenie</p>
+      <select class="form-control" id="exampleSelect1">
+        <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
+      </select>
+
+
+      <legend>Zaangarzowanie:</legend>
+      <p class="coment">Jak bardzo jesteś zdeterminowany do przestrzegania diety</p>
+      <select class="form-control" id="exampleSelect1">
+        <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
+      </select>
+
+    </div>
     <div class="card-body">
       <button (click)="showResults()" class="btn btn-secondary btn-lg btn-block">Wyznacz dietę</button>
     </div>
