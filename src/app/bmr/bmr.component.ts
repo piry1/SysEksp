@@ -42,6 +42,12 @@ export class BmrComponent implements OnInit {
     { "name": "Proponowana masa", "value": "" }
   ];
 
+  foodResults: { readonly name: string, value: string }[] = [
+    { "name": "Białko", "value": "" },
+    { "name": "Węglowodany", "value": "" },
+    { "name": "Tłuszcze", "value": "" }
+  ];
+
   user = new User();
   canShowResults: boolean = false;
 
@@ -51,11 +57,9 @@ export class BmrComponent implements OnInit {
   calcBmr() {
 
     this.user.countAllParams();
+    this.setChartValues();
 
-    this.results[0].value = User.Bmr.toFixed() + " kcal";
-    this.results[1].value = User.Cpm.toFixed() + " kcal";
-    this.results[2].value = this.user.Weight.toFixed(1) + " kg";
-    this.results[3].value = User.ProposedMass.toFixed(1) + " kg";
+    this.setTableResults();
 
     this.showResults();
     console.log(User.Bmr);
@@ -69,6 +73,23 @@ export class BmrComponent implements OnInit {
 
   hideResults() {
     this.canShowResults = false;
+  }
+
+  setChartValues() {
+    this.doughnutChartData[0] = Number(User.gProteins.toFixed());
+    this.doughnutChartData[1] = Number(User.gCarbohydrates.toFixed());
+    this.doughnutChartData[2] = Number(User.gFat.toFixed());
+  }
+
+  setTableResults() {
+    this.results[0].value = User.Bmr.toFixed() + " kcal";
+    this.results[1].value = User.Cpm.toFixed() + " kcal";
+    this.results[2].value = this.user.Weight.toFixed(1) + " kg";
+    this.results[3].value = User.ProposedMass.toFixed(1) + " kg";
+
+    this.foodResults[0].value = User.gProteins.toFixed() + " g (" + Number(User.FoodProportions.Protein * 100).toFixed() + "%)";
+    this.foodResults[1].value = User.gCarbohydrates.toFixed() + " g (" + Number(User.FoodProportions.Carbohydrates * 100).toFixed() + "%)";
+    this.foodResults[2].value = User.gFat.toFixed() + " g (" + Number(User.FoodProportions.Fat * 100).toFixed() + "%)";
   }
 
 }

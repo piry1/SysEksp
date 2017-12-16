@@ -110,20 +110,32 @@
 
     <div class="card-body">
       <div class="row">
+
         <div class="col-md-6">
+          <h4>Parametry</h4>
           <table class="table table-hover">
             <tbody>
               <tr *ngFor="let result of results">
-                <th scope="row">{{result.name}}</th>
+                <th style="width: 290px" scope="row">{{result.name}}</th>
                 <td>{{result.value}}</td>
               </tr>
             </tbody>
           </table>
 
+          <h4>Proponowane proporcje diety</h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr *ngFor="let result of foodResults">
+                <th style="width: 290px" scope="row">{{result.name}}</th>
+                <td>{{result.value}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div style="display: block" class="col-md-6">
-          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+          <h4>Proporcje diety</h4>
+          <canvas style="margin-top: 40px" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>

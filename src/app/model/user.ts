@@ -1,3 +1,26 @@
+export class FoodProportions {
+    Fat: number;
+    Protein: number;
+    Carbohydrates: number;
+
+    setProportions(metabolism: Metabolism) {
+        if (metabolism == Metabolism.Ektomorfik) {
+            this.Fat = 0.20;
+            this.Carbohydrates = 0.55;
+            this.Protein = 0.25;
+        } else if (metabolism == Metabolism.Endomorfik) {
+            this.Fat = 0.35;
+            this.Carbohydrates = 0.30;
+            this.Protein = 0.35;
+        } else if (metabolism == Metabolism.Mezomorfik) {
+            this.Fat = 0.25;
+            this.Carbohydrates = 0.45;
+            this.Protein = 0.30;
+        }
+
+    }
+}
+
 export class User {
     Gender: Gender = Gender.Male;
     Age: number = 0;
@@ -7,15 +30,27 @@ export class User {
     Plans: Plans = Plans.Stay;
     MuscleMass: number = 0;
     Metabolism: Metabolism = Metabolism.Ektomorfik;
+    static FoodProportions = new FoodProportions();
     static Bmr: number = 0;
     static ProposedMass: number = 0;
     static Cpm: number = 0;
-
+    static gFat: number;
+    static gProteins: number;
+    static gCarbohydrates: number;
 
     public countAllParams() {
         this.countProposedMass();
         this.countBmr();
         this.countCpm();
+        User.FoodProportions.setProportions(this.Metabolism);
+        this.countFoodGrams();
+    }
+
+
+    public countFoodGrams() {
+        User.gFat = (User.FoodProportions.Fat * User.Cpm) / Paramiters.FoodCalories[0].value;
+        User.gProteins = (User.FoodProportions.Protein *User.Cpm) / Paramiters.FoodCalories[1].value;
+        User.gCarbohydrates = (User.FoodProportions.Carbohydrates * User.Cpm) / Paramiters.FoodCalories[2].value;
     }
 
     public countProposedMass(): number {
@@ -88,9 +123,16 @@ export class User {
     }
 }
 
+
+
 export class Paramiters {
     static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2.3];
     static readonly kPAL: number[] = [1.13, 1, 0.87];
+    static readonly FoodCalories: { readonly name: string, value: number }[] = [
+        { "name": "Fat", "value": 9 },
+        { "name": "Protein", "value": 4 },
+        { "name": "Carbohydrates", "value": 4 }
+    ];
 }
 
 export enum Plans {
