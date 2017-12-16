@@ -77,6 +77,18 @@
         <option *ngFor="let activity of activities; let i = index" [value]="i">{{activity}}</option>
       </select>
 
+      <legend>Metabolism:</legend>
+      <div class="row">
+        <div class="col-sm-10">
+          <select [(ngModel)]="user.Metabolism" class="form-control" id="exampleSelect1">
+            <option *ngFor="let meta of metabolism; let i = index" [value]="i">{{meta}}</option>
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-info btn-block">Co wybrać?</button>
+        </div>
+      </div>
+
       <legend>Planuje:</legend>
       <select class="form-control" [(ngModel)]="user.Plans" id="exampleSelect1">
         <option value='-1' disabled selected>Wybierz co chcesz osignąć</option>
@@ -131,6 +143,38 @@
       </div>
     </div>
 
+  </div>
+
+
+  <div id="myModal" class="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Jaki metabolizm wybrać</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <h2> Ektomorfik</h2>
+          <p>Jeśli jesteś ektomorfikiem, jesteś naturalnie chudy i masz kościste kończyny oraz wysoką tolerancję węglowodanów.
+            Zwykle, twój metabolizm jest szybki.</p>
+
+          <h3>Mezomorfik</h3>
+          <p>Mezomorfik to człowiek o muskularnej i atletycznej budowie. Ma średnią tolerancję węglowodanów i średni metabolizm.
+          </p>
+
+          <h3> Endomorfik</h3>
+          <p>Jeśli naturalnie jesteś szerokiej i krępej budowy, prawdopodobnie jesteś endomorfikiem. Endomorficy mają niską
+            tolerancję na węglowodany i wolny metabolizm.</p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>

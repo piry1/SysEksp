@@ -6,6 +6,7 @@ export class User {
     PhisicalActivity: PhisicalActivity = PhisicalActivity.None;
     Plans: Plans = Plans.Stay;
     MuscleMass: number = 0;
+    Metabolism: Metabolism = Metabolism.Ektomorfik;
     static Bmr: number = 0;
     static ProposedMass: number = 0;
     static Cpm: number = 0;
@@ -93,13 +94,19 @@ export class Paramiters {
 }
 
 export enum Plans {
-    Gain = 0,
+    Gain,
     Stay,
     Loose
 }
 
+export enum Metabolism {
+    Ektomorfik,
+    Mezomorfik,
+    Endomorfik
+}
+
 export enum PhisicalActivity {
-    None = 0,
+    None,
     Small,
     Normal,
     Big,

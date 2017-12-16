@@ -29,6 +29,12 @@ export class BmrComponent implements OnInit {
     "Planuję schudnąć"
   ]
 
+  metabolism: string[] = [
+    "Ektomorfik",
+    "Mezomorfik",
+    "Endomorfik"
+  ]
+
   results: { readonly name: string, value: string }[] = [
     { "name": "BMR", "value": "" },
     { "name": "CPM", "value": "" },
