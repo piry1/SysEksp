@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BmrComponent } from './bmr/bmr.component';
 import { DietComponent } from './diet/diet.component';
+import { SportComponent } from './sport/sport.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DietComponent } from './diet/diet.component';
     FooterComponent,
     HomeComponent,
     BmrComponent,
-    DietComponent
+    DietComponent,
+    SportComponent
   ],
   imports: [
     BrowserModule,
