@@ -1,41 +1,10 @@
 import { Gender, Metabolism, PhisicalActivity, Plans, BodyFat, Water } from './enums';
-
-export class FoodProportions {
-    Fat: number;
-    Protein: number;
-    Carbohydrates: number;
-    gFat: number;
-    gProteins: number;
-    gCarbohydrates: number;
-
-    private readonly fatKcal = 9;
-    private readonly proteinKcal = 4;
-    private readonly carboKcal = 4;
-
-
-    setProportions(metabolism: Metabolism, cpm: number) {
-        if (metabolism == Metabolism.Ektomorfik) {
-            this.Fat = 0.20;
-            this.Carbohydrates = 0.55;
-            this.Protein = 0.25;
-        } else if (metabolism == Metabolism.Endomorfik) {
-            this.Fat = 0.35;
-            this.Carbohydrates = 0.30;
-            this.Protein = 0.35;
-        } else if (metabolism == Metabolism.Mezomorfik) {
-            this.Fat = 0.25;
-            this.Carbohydrates = 0.45;
-            this.Protein = 0.30;
-        }
-
-        this.gFat = (this.Fat * cpm) / this.fatKcal;
-        this.gProteins = (this.Protein * cpm) / this.proteinKcal;
-        this.gCarbohydrates = (this.Carbohydrates * cpm) / this.carboKcal;
-
-    }
-}
+import { FoodProportions } from './foodproportions';
 
 export class User {
+
+    //#region Paramiters
+
     Gender: Gender = Gender.Male;
     Age: number = 0;
     Weight: number = 0;
@@ -53,6 +22,11 @@ export class User {
     BodyFat: BodyFat = BodyFat.Average;
     Water: Water = Water.Norm;
 
+    //#endregion
+
+    private readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2.3];
+    private readonly kPAL: number[] = [1.13, 1, 0.87];
+
     public countAllParams() {
         this.countProposedMass();
         this.countBmr();
@@ -62,7 +36,9 @@ export class User {
         this.countWater();
     }
 
-    public countProposedMass(): number {
+    //#region  Private methods
+
+    private countProposedMass(): number {
         var result = 0;
         if (this.Gender == Gender.Male)
             result = this.Height - 100 - (this.Height - 150) / 4;
@@ -73,12 +49,14 @@ export class User {
         return result;
     }
 
-    public countCpm(): number {
-        this.Cpm = this.Bmr * Paramiters.PAL[this.PhisicalActivity] * Paramiters.kPAL[this.Plans];
+    private countCpm(): number {
+        this.Cpm = this.Bmr * this.PAL[this.PhisicalActivity] * this.kPAL[this.Plans];
         return this.Cpm;
     }
 
-    public countBmr(): number {
+    //#region BMR methods
+
+    private countBmr(): number {
         var bmrHarris = this.countBmrHarris();
         var bmrMifflin = this.countBmrMifflin();
         var bmrMcArdle = this.countMcArdle();
@@ -130,6 +108,8 @@ export class User {
     private countMcArdle(): number {
         return 370 + (21.6 * this.MuscleMass);
     }
+
+    //#endregion
 
     private countBodyFat() {
         var bf: BodyFat;
@@ -196,14 +176,8 @@ export class User {
 
         this.Water = w;
     }
+
+    //#endregion
 }
 
-export class UserData {
-    static body: User = new User();
-}
-
-export class Paramiters {
-    static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2.3];
-    static readonly kPAL: number[] = [1.13, 1, 0.87];
-}
 
