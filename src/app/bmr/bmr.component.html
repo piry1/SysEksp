@@ -73,14 +73,14 @@
 
       <div class="form-group">
         <legend>Ilość tłuszczu w ciele (%):</legend>
-        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.FatPercent" aria-describedby="emailHelp"
+        <input type="number" class="form-control" min="1" max="100" id="exampleInputEmail1" [(ngModel)]="user.FatPercent" aria-describedby="emailHelp"
           placeholder="cm">
         <small>Parametr opcjonalny</small>
       </div>
 
       <div class="form-group">
         <legend>Ilość wody w ciele (%):</legend>
-        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.WaterPercent" aria-describedby="emailHelp"
+        <input type="number" class="form-control" min="1" max="100" id="exampleInputEmail1" [(ngModel)]="user.WaterPercent" aria-describedby="emailHelp"
           placeholder="cm">
         <small>Parametr opcjonalny</small>
       </div>
