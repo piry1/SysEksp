@@ -35,7 +35,7 @@
     <div class="card-body">
 
       <legend>Preferencje żywieniowe:</legend>
-      <select class="form-control" [(ngModel)]="diet.FoodPreferences" id="exampleSelect1">
+      <select class="form-control" [(ngModel)]="diet.FoodPreferences">
         <option *ngFor="let pref of foodPreferences; let i = index" [value]="i">{{pref}}</option>
       </select>
 
@@ -48,20 +48,20 @@
 
       <legend>Ilość wolnego czasu:</legend>
       <p class="coment">Ilość czasu jaką jesteś w stanie przeznaczyć na przygotowanie posiłków</p>
-      <select class="form-control" id="exampleSelect1">
+      <select class="form-control" [(ngModel)]="diet.Time">
         <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
       </select>
 
       <legend>Gotówka:</legend>
       <p class="coment">Jak wiele jesteś w stanie przeznaczyć na jedzenie</p>
-      <select class="form-control" id="exampleSelect1">
+      <select class="form-control" [(ngModel)]="diet.Money">
         <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
       </select>
 
 
       <legend>Zaangarzowanie:</legend>
       <p class="coment">Jak bardzo jesteś zdeterminowany do przestrzegania diety</p>
-      <select class="form-control" id="exampleSelect1">
+      <select class="form-control" [(ngModel)]="diet.Engagement">
         <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
       </select>
 

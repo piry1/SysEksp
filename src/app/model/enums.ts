@@ -42,3 +42,9 @@ export enum FoodPref {
     Vegeterian,
     Vegan
 }
+
+export enum Degree{
+    Small,
+    Medium,
+    High
+}
