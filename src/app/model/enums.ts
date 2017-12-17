@@ -36,3 +36,9 @@ export enum Water {
     Norm,
     Abovew
 }
+
+export enum FoodPref {
+    All,
+    Vegeterian,
+    Vegan
+}

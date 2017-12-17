@@ -1,6 +1,8 @@
+import { FoodPref } from './enums';
+
 export class Diet {
     Allergy: Allergy = new Allergy();
-
+    FoodPreferences: FoodPref = FoodPref.All;
 }
 
 export class Allergy {

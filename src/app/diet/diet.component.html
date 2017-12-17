@@ -35,7 +35,7 @@
     <div class="card-body">
 
       <legend>Preferencje żywieniowe:</legend>
-      <select class="form-control" id="exampleSelect1">
+      <select class="form-control" [(ngModel)]="diet.FoodPreferences" id="exampleSelect1">
         <option *ngFor="let pref of foodPreferences; let i = index" [value]="i">{{pref}}</option>
       </select>
 
