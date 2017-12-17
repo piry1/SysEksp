@@ -11,6 +11,7 @@ import { BmrComponent } from './bmr/bmr.component';
 import { DietComponent } from './diet/diet.component';
 import { SportComponent } from './sport/sport.component';
 import { SummaryComponent } from './summary/summary.component';
+import { BmrResultsComponent } from './bmr/bmr-results/bmr-results.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SummaryComponent } from './summary/summary.component';
     BmrComponent,
     DietComponent,
     SportComponent,
-    SummaryComponent
+    SummaryComponent,
+    BmrResultsComponent
   ],
   imports: [
     BrowserModule,

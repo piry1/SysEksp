@@ -50,7 +50,7 @@ export class User {
     Cpm: number = 0;
     WaterPercent: number = 0;
     FatPercent: number = 0;
-    BodyFat: BodyFat;
+    BodyFat: BodyFat = BodyFat.Average;
 
     public countAllParams() {
         this.countProposedMass();

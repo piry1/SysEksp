@@ -59,8 +59,6 @@ export class BmrComponent implements OnInit {
     this.user.countAllParams();
     UserData.body = this.user;
 
-    this.setChartValues();
-    this.setTableResults();
     this.showResults();
   }
 
@@ -70,23 +68,6 @@ export class BmrComponent implements OnInit {
 
   hideResults() {
     this.canShowResults = false;
-  }
-
-  setChartValues() {
-    this.doughnutChartData[0] = Number(UserData.body.FoodProportions.gProteins.toFixed());
-    this.doughnutChartData[1] = Number(UserData.body.FoodProportions.gCarbohydrates.toFixed());
-    this.doughnutChartData[2] = Number(UserData.body.FoodProportions.gFat.toFixed());
-  }
-
-  setTableResults() {
-    this.results[0].value = UserData.body.Bmr.toFixed() + " kcal";
-    this.results[1].value = UserData.body.Cpm.toFixed() + " kcal";
-    this.results[2].value = UserData.body.Weight.toFixed(1) + " kg";
-    this.results[3].value = UserData.body.ProposedMass.toFixed(1) + " kg";
-
-    this.foodResults[0].value = UserData.body.FoodProportions.gProteins.toFixed() + " g (" + Number(UserData.body.FoodProportions.Protein * 100).toFixed() + "%)";
-    this.foodResults[1].value = UserData.body.FoodProportions.gCarbohydrates.toFixed() + " g (" + Number(UserData.body.FoodProportions.Carbohydrates * 100).toFixed() + "%)";
-    this.foodResults[2].value = UserData.body.FoodProportions.gFat.toFixed() + " g (" + Number(UserData.body.FoodProportions.Fat * 100).toFixed() + "%)";
   }
 
 }

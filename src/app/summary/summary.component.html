@@ -6,47 +6,18 @@
     <div class="card-body">
       <img class="rounded-circle" style="margin-bottom: -68px;" src="/assets/pictures/cardiogram.png" width="80" height="80">
       <h1 style="margin-left: 100px; margin-bottom: 25px;">Parametry ciała</h1>
-      <div class="row">
+    </div>
 
-        <div class="col-md-6">
-          <h4>Parametry</h4>
-          <table class="table table-hover">
-            <tbody>
-              <tr *ngFor="let result of results">
-                <th style="width: 290px" scope="row">{{result.name}}</th>
-                <td>{{result.value}}</td>
-              </tr>
-            </tbody>
-          </table>
+    <app-bmr-results></app-bmr-results>
 
-          <h4>Proponowane proporcje diety</h4>
-          <table class="table table-hover">
-            <tbody>
-              <tr *ngFor="let result of foodResults">
-                <th style="width: 290px" scope="row">{{result.name}}</th>
-                <td>{{result.value}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="display: block" class="col-md-6">
-          <h4>Proporcje diety</h4>
-          <canvas style="margin-top: 40px" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-        </div>
-      </div>
+    <div class="card-body">
+      <img class="rounded-circle" style="margin-bottom: -68px;" src="/assets/pictures/juice.png" width="80" height="80">
+      <h1 style="margin-left: 100px; margin-bottom: 25px;">Dieta</h1>
     </div>
 
     <div class="card-body">
-        <img class="rounded-circle" style="margin-bottom: -68px;" src="/assets/pictures/juice.png" width="80" height="80">
-        <h1 style="margin-left: 100px; margin-bottom: 25px;">Dieta</h1>
-
-    </div>
-
-    <div class="card-body">
-        <img class="rounded-circle" style="margin-bottom: -68px;" src="/assets/pictures/weight.png" width="80" height="80">
-        <h1 style="margin-left: 100px; margin-bottom: 25px;">Ćwiczenia</h1>
+      <img class="rounded-circle" style="margin-bottom: -68px;" src="/assets/pictures/weight.png" width="80" height="80">
+      <h1 style="margin-left: 100px; margin-bottom: 25px;">Ćwiczenia</h1>
     </div>
 
     <div class="card-body">
