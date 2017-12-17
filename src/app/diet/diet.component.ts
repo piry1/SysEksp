@@ -32,7 +32,7 @@ export class DietComponent implements OnInit {
     "jajka",
     "mleko",
     "orzeszki ziemne i inne orzechy",
-    "soja",
+    "awokado",
     "owoce morza"
   ];
 
@@ -58,9 +58,10 @@ export class DietComponent implements OnInit {
 
 
   showResults() {
-    this.canShowResults = true;
     this.setFoodAllergy();
-
+    UserData.diet = this.diet;
+    UserData.diet.countMeals();
+    this.canShowResults = true;
   }
 
   hideResults() {
