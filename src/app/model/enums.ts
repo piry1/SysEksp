@@ -24,9 +24,15 @@ export enum Gender {
     Female
 }
 
-export enum BodyFat{
+export enum BodyFat {
     Lean,
     Ideal,
     Average,
     Above
+}
+
+export enum Water {
+    Below,
+    Norm,
+    Abovew
 }

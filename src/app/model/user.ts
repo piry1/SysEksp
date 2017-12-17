@@ -1,4 +1,4 @@
-import { Gender, Metabolism, PhisicalActivity, Plans, BodyFat } from './enums';
+import { Gender, Metabolism, PhisicalActivity, Plans, BodyFat, Water } from './enums';
 
 export class FoodProportions {
     Fat: number;
@@ -51,6 +51,7 @@ export class User {
     WaterPercent: number = 0;
     FatPercent: number = 0;
     BodyFat: BodyFat = BodyFat.Average;
+    Water: Water = Water.Norm;
 
     public countAllParams() {
         this.countProposedMass();
@@ -58,6 +59,7 @@ export class User {
         this.countCpm();
         this.FoodProportions.setProportions(this.Metabolism, this.Cpm);
         this.countBodyFat();
+        this.countWater();
     }
 
     public countProposedMass(): number {
@@ -170,6 +172,29 @@ export class User {
         }
 
         this.BodyFat = bf;
+    }
+
+    private countWater() {
+        var wp = this.WaterPercent;
+        var w: Water;
+
+        if (this.Gender == Gender.Male) {
+            if (wp < 60)
+                w = Water.Below;
+            else if (wp <= 65)
+                w = Water.Norm;
+            else
+                w = Water.Abovew;
+        } else {
+            if (wp < 50)
+                w = Water.Below;
+            else if (wp <= 55)
+                w = Water.Norm;
+            else
+                w = Water.Abovew;
+        }
+
+        this.Water = w;
     }
 }
 

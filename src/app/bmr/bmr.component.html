@@ -48,40 +48,34 @@
 
       <div class="form-group">
         <legend>Masa ciała (kg):</legend>
-        <input type="number" class="form-control" min="1" [(ngModel)]="user.Weight" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="kg">
+        <input type="number" class="form-control" min="1" [(ngModel)]="user.Weight" id="exampleInputEmail1" placeholder="kg">
       </div>
 
       <div class="form-group">
         <legend>Wiek (lata):</legend>
-        <input type="number" min="1" class="form-control" id="exampleInputEmail1" [(ngModel)]="user.Age" aria-describedby="emailHelp"
-          placeholder="lata">
+        <input type="number" min="1" class="form-control" [(ngModel)]="user.Age" placeholder="lata">
       </div>
 
       <div class="form-group">
         <legend>Wzrost (cm):</legend>
-        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.Height" aria-describedby="emailHelp"
-          placeholder="cm">
+        <input type="number" class="form-control" min="1" [(ngModel)]="user.Height" placeholder="cm">
       </div>
 
       <div class="form-group">
         <legend>Masa mięśniowa (kg):</legend>
-        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.MuscleMass" aria-describedby="emailHelp"
-          placeholder="cm">
+        <input type="number" class="form-control" min="1" [(ngModel)]="user.MuscleMass">
         <small>Parametr opcjonalny</small>
       </div>
 
       <div class="form-group">
         <legend>Ilość tłuszczu w ciele (%):</legend>
-        <input type="number" class="form-control" min="1" max="100" id="exampleInputEmail1" [(ngModel)]="user.FatPercent" aria-describedby="emailHelp"
-          placeholder="cm">
+        <input type="number" class="form-control" min="1" max="100" [(ngModel)]="user.FatPercent">
         <small>Parametr opcjonalny</small>
       </div>
 
       <div class="form-group">
         <legend>Ilość wody w ciele (%):</legend>
-        <input type="number" class="form-control" min="1" max="100" id="exampleInputEmail1" [(ngModel)]="user.WaterPercent" aria-describedby="emailHelp"
-          placeholder="cm">
+        <input type="number" class="form-control" min="1" max="100" [(ngModel)]="user.WaterPercent">
         <small>Parametr opcjonalny</small>
       </div>
 
@@ -115,7 +109,7 @@
       <button (click)="calcBmr()" class="btn btn-primary btn-lg btn-block">Przelicz wskaźnik BMR</button>
     </div>
   </div>
-  
+
 
   <div *ngIf="canShowResults" class="card border-primary mb-3">
     <h3 class="card-header">Wyniki</h3>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, Paramiters, UserData } from '../../model/user';
-import { BodyFat } from '../../model/enums';
+import { BodyFat, Water } from '../../model/enums';
 
 @Component({
   selector: 'app-bmr-results',
@@ -20,7 +20,8 @@ export class BmrResultsComponent implements OnInit {
     { "name": "CPM", "value": "" },
     { "name": "Aktualna masa", "value": "" },
     { "name": "Proponowana masa", "value": "" },
-    { "name": "Poziom tkanki tłuszczowej", "value": "" }
+    { "name": "Poziom tkanki tłuszczowej", "value": "" },
+    { "name": "Ilość wody w organiźmie", "value": "" }
   ];
 
   foodResults: { readonly name: string, value: string }[] = [
@@ -44,19 +45,33 @@ export class BmrResultsComponent implements OnInit {
   setTableResults() {
 
     var fatName = "";
+    var waterName = "";
 
     switch (UserData.body.BodyFat) {
       case BodyFat.Lean: fatName = "Niedowaga"; break;
       case BodyFat.Ideal: fatName = "Ideał"; break;
-      case BodyFat.Average: fatName = "W normie"; break;
+      case BodyFat.Average: fatName = "Norma"; break;
       case BodyFat.Above: fatName = "Nadwaga"; break;
     }
+
+    switch (UserData.body.Water) {
+      case Water.Below: waterName = "Odwodnienie"; break;
+      case Water.Norm: waterName = "Norma"; break;
+      case Water.Abovew: waterName = "Nadmiar wody"; break;
+    }
+
+    if (UserData.body.WaterPercent == 0)
+      waterName = "Brak danych";
+    if (UserData.body.FatPercent == 0)
+      fatName = "Brak danych";
+
 
     this.results[0].value = UserData.body.Bmr.toFixed() + " kcal";
     this.results[1].value = UserData.body.Cpm.toFixed() + " kcal";
     this.results[2].value = UserData.body.Weight.toFixed(1) + " kg";
     this.results[3].value = UserData.body.ProposedMass.toFixed(1) + " kg";
     this.results[4].value = UserData.body.FatPercent.toFixed(1) + "% : " + fatName;
+    this.results[5].value = UserData.body.WaterPercent.toFixed(1) + "% : " + waterName;
 
     this.foodResults[0].value = UserData.body.FoodProportions.gProteins.toFixed() + " g (" + Number(UserData.body.FoodProportions.Protein * 100).toFixed() + "%)";
     this.foodResults[1].value = UserData.body.FoodProportions.gCarbohydrates.toFixed() + " g (" + Number(UserData.body.FoodProportions.Carbohydrates * 100).toFixed() + "%)";
