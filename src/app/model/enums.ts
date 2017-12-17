@@ -23,3 +23,10 @@ export enum Gender {
     Male,
     Female
 }
+
+export enum BodyFat{
+    Lean,
+    Ideal,
+    Average,
+    Above
+}

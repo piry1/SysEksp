@@ -1,4 +1,4 @@
-import { Gender, Metabolism, PhisicalActivity, Plans } from './enums';
+import { Gender, Metabolism, PhisicalActivity, Plans, BodyFat } from './enums';
 
 export class FoodProportions {
     Fat: number;
@@ -50,12 +50,14 @@ export class User {
     Cpm: number = 0;
     WaterPercent: number = 0;
     FatPercent: number = 0;
+    BodyFat: BodyFat;
 
     public countAllParams() {
         this.countProposedMass();
         this.countBmr();
         this.countCpm();
         this.FoodProportions.setProportions(this.Metabolism, this.Cpm);
+        this.countBodyFat();
     }
 
     public countProposedMass(): number {
@@ -125,6 +127,49 @@ export class User {
 
     private countMcArdle(): number {
         return 370 + (21.6 * this.MuscleMass);
+    }
+
+    private countBodyFat() {
+        var bf: BodyFat;
+        var k: number = 0;
+
+        if (this.Gender == Gender.Male) {
+            for (var i = 20; i <= 55; i += 5) {
+                if (this.Age <= i || this.Age > 55) {
+                    if (this.Age > 55)
+                        k = 10;
+                    if (this.FatPercent < 7 + k)
+                        bf = BodyFat.Lean;
+                    else if (this.FatPercent < 13 + k)
+                        bf = BodyFat.Ideal;
+                    else if (this.FatPercent < 21 + k)
+                        bf = BodyFat.Average;
+                    else
+                        bf = BodyFat.Above;
+                    break;
+                }
+                k++;
+            }
+        } else {
+            for (var i = 20; i <= 55; i += 5) {
+                if (this.Age <= i || this.Age > 55) {
+                    if (this.Age > 55)
+                        k = 7;
+                    if (this.FatPercent < 17 + k)
+                        bf = BodyFat.Lean;
+                    else if (this.FatPercent < 23 + k)
+                        bf = BodyFat.Ideal;
+                    else if (this.FatPercent < 29 + k)
+                        bf = BodyFat.Average;
+                    else
+                        bf = BodyFat.Above;
+                    break;
+                }
+                k += 0.7;
+            }
+        }
+
+        this.BodyFat = bf;
     }
 }
 
