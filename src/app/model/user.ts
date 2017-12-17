@@ -1,4 +1,4 @@
-import {Gender, Metabolism, PhisicalActivity, Plans } from './enums';
+import { Gender, Metabolism, PhisicalActivity, Plans } from './enums';
 
 export class FoodProportions {
     Fat: number;
@@ -48,7 +48,9 @@ export class User {
     Bmr: number = 0;
     ProposedMass: number = 0;
     Cpm: number = 0;
-  
+    WaterPercent: number = 0;
+    FatPercent: number = 0;
+
     public countAllParams() {
         this.countProposedMass();
         this.countBmr();
@@ -78,9 +80,9 @@ export class User {
         var bmrMcArdle = this.countMcArdle();
 
         if (this.MuscleMass != 0)
-        this.Bmr = (2 * bmrHarris + 2 * bmrMcArdle + bmrMifflin) / 5 + 100;
+            this.Bmr = (2 * bmrHarris + 2 * bmrMcArdle + bmrMifflin) / 5 + 100;
         else
-        this.Bmr = (bmrHarris + bmrMifflin) / 2;
+            this.Bmr = (bmrHarris + bmrMifflin) / 2;
 
         return this.Bmr;
     }

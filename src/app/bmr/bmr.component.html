@@ -71,6 +71,20 @@
         <small>Parametr opcjonalny</small>
       </div>
 
+      <div class="form-group">
+        <legend>Ilość tłuszczu w ciele (%):</legend>
+        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.FatPercent" aria-describedby="emailHelp"
+          placeholder="cm">
+        <small>Parametr opcjonalny</small>
+      </div>
+
+      <div class="form-group">
+        <legend>Ilość wody w ciele (%):</legend>
+        <input type="number" class="form-control" min="1" id="exampleInputEmail1" [(ngModel)]="user.WaterPercent" aria-describedby="emailHelp"
+          placeholder="cm">
+        <small>Parametr opcjonalny</small>
+      </div>
+
       <legend>Aktywność fizyczna:</legend>
       <select [(ngModel)]="user.PhisicalActivity" class="form-control" id="exampleSelect1">
         <option value="" disabled selected>Wybierz rodzaj aktywności fizycznej</option>
@@ -135,8 +149,8 @@
 
         <div style="display: block" class="col-md-6">
           <h4>Proporcje diety</h4>
-          <canvas style="margin-top: 40px" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+          <canvas style="margin-top: 40px" baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
