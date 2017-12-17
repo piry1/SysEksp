@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User, UserData } from '../model/user';
+import { User } from '../model/user';
+import { UserData } from '../model/userdata';
 
 @Component({
   selector: 'app-summary',

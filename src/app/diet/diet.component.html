@@ -40,9 +40,9 @@
       </select>
 
       <legend>Alergie</legend>
-      <div class="form-check" *ngFor="let allergy of allergies; let i = index">
+      <div class="form-check" *ngFor="let allergyName of allergies; let i = index">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" [value]="i"> {{allergy}}
+          <input class="form-check-input" type="checkbox" [checked]="allergy[i]" (change)="allergy[i] = !allergy[i]"> {{allergyName}}
         </label>
       </div>
 

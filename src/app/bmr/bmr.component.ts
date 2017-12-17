@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Paramiters, UserData } from '../model/user';
+import { User } from '../model/user';
+import { UserData } from '../model/userdata';
 import { Gender, PhisicalActivity, Plans } from '../model/enums';
 
 @Component({
