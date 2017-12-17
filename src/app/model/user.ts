@@ -1,9 +1,19 @@
+import {Gender, Metabolism, PhisicalActivity, Plans } from './enums';
+
 export class FoodProportions {
     Fat: number;
     Protein: number;
     Carbohydrates: number;
+    gFat: number;
+    gProteins: number;
+    gCarbohydrates: number;
 
-    setProportions(metabolism: Metabolism) {
+    private readonly fatKcal = 9;
+    private readonly proteinKcal = 4;
+    private readonly carboKcal = 4;
+
+
+    setProportions(metabolism: Metabolism, cpm: number) {
         if (metabolism == Metabolism.Ektomorfik) {
             this.Fat = 0.20;
             this.Carbohydrates = 0.55;
@@ -18,6 +28,10 @@ export class FoodProportions {
             this.Protein = 0.30;
         }
 
+        this.gFat = (this.Fat * cpm) / this.fatKcal;
+        this.gProteins = (this.Protein * cpm) / this.proteinKcal;
+        this.gCarbohydrates = (this.Carbohydrates * cpm) / this.carboKcal;
+
     }
 }
 
@@ -30,27 +44,16 @@ export class User {
     Plans: Plans = Plans.Stay;
     MuscleMass: number = 0;
     Metabolism: Metabolism = Metabolism.Ektomorfik;
-    static FoodProportions = new FoodProportions();
-    static Bmr: number = 0;
-    static ProposedMass: number = 0;
-    static Cpm: number = 0;
-    static gFat: number;
-    static gProteins: number;
-    static gCarbohydrates: number;
-
+    FoodProportions = new FoodProportions();
+    Bmr: number = 0;
+    ProposedMass: number = 0;
+    Cpm: number = 0;
+  
     public countAllParams() {
         this.countProposedMass();
         this.countBmr();
         this.countCpm();
-        User.FoodProportions.setProportions(this.Metabolism);
-        this.countFoodGrams();
-    }
-
-
-    public countFoodGrams() {
-        User.gFat = (User.FoodProportions.Fat * User.Cpm) / Paramiters.FoodCalories[0].value;
-        User.gProteins = (User.FoodProportions.Protein *User.Cpm) / Paramiters.FoodCalories[1].value;
-        User.gCarbohydrates = (User.FoodProportions.Carbohydrates * User.Cpm) / Paramiters.FoodCalories[2].value;
+        this.FoodProportions.setProportions(this.Metabolism, this.Cpm);
     }
 
     public countProposedMass(): number {
@@ -60,13 +63,13 @@ export class User {
         else if (this.Gender == Gender.Female)
             result = this.Height - 100 - (this.Height - 150) / 2;
 
-        User.ProposedMass = result;
+        this.ProposedMass = result;
         return result;
     }
 
     public countCpm(): number {
-        User.Cpm = User.Bmr * Paramiters.PAL[this.PhisicalActivity] * Paramiters.kPAL[this.Plans];
-        return User.Cpm;
+        this.Cpm = this.Bmr * Paramiters.PAL[this.PhisicalActivity] * Paramiters.kPAL[this.Plans];
+        return this.Cpm;
     }
 
     public countBmr(): number {
@@ -75,11 +78,11 @@ export class User {
         var bmrMcArdle = this.countMcArdle();
 
         if (this.MuscleMass != 0)
-            User.Bmr = (2 * bmrHarris + 2 * bmrMcArdle + bmrMifflin) / 5 + 100;
+        this.Bmr = (2 * bmrHarris + 2 * bmrMcArdle + bmrMifflin) / 5 + 100;
         else
-            User.Bmr = (bmrHarris + bmrMifflin) / 2;
+        this.Bmr = (bmrHarris + bmrMifflin) / 2;
 
-        return User.Bmr;
+        return this.Bmr;
     }
 
     private countBmrHarris(): number {
@@ -123,40 +126,12 @@ export class User {
     }
 }
 
-
+export class UserData {
+    static body: User = new User();
+}
 
 export class Paramiters {
     static readonly PAL: number[] = [1.3, 1.4, 1.6, 1.75, 2, 2.3];
     static readonly kPAL: number[] = [1.13, 1, 0.87];
-    static readonly FoodCalories: { readonly name: string, value: number }[] = [
-        { "name": "Fat", "value": 9 },
-        { "name": "Protein", "value": 4 },
-        { "name": "Carbohydrates", "value": 4 }
-    ];
 }
 
-export enum Plans {
-    Gain,
-    Stay,
-    Loose
-}
-
-export enum Metabolism {
-    Ektomorfik,
-    Mezomorfik,
-    Endomorfik
-}
-
-export enum PhisicalActivity {
-    None,
-    Small,
-    Normal,
-    Big,
-    VerryBig,
-    Extreme
-}
-
-export enum Gender {
-    Male,
-    Female
-}

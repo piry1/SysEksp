@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Gender, PhisicalActivity, Plans, Paramiters } from '../model/user';
+import { User, Paramiters, UserData } from '../model/user';
+import { Gender, PhisicalActivity, Plans } from '../model/enums';
 
 @Component({
   selector: 'app-bmr',
@@ -55,16 +56,12 @@ export class BmrComponent implements OnInit {
   }
 
   calcBmr() {
-
     this.user.countAllParams();
+    UserData.body = this.user;
+
     this.setChartValues();
-
     this.setTableResults();
-
     this.showResults();
-    console.log(User.Bmr);
-    console.log(User.Cpm);
-    console.log(User.ProposedMass);
   }
 
   showResults() {
@@ -76,20 +73,20 @@ export class BmrComponent implements OnInit {
   }
 
   setChartValues() {
-    this.doughnutChartData[0] = Number(User.gProteins.toFixed());
-    this.doughnutChartData[1] = Number(User.gCarbohydrates.toFixed());
-    this.doughnutChartData[2] = Number(User.gFat.toFixed());
+    this.doughnutChartData[0] = Number(UserData.body.FoodProportions.gProteins.toFixed());
+    this.doughnutChartData[1] = Number(UserData.body.FoodProportions.gCarbohydrates.toFixed());
+    this.doughnutChartData[2] = Number(UserData.body.FoodProportions.gFat.toFixed());
   }
 
   setTableResults() {
-    this.results[0].value = User.Bmr.toFixed() + " kcal";
-    this.results[1].value = User.Cpm.toFixed() + " kcal";
-    this.results[2].value = this.user.Weight.toFixed(1) + " kg";
-    this.results[3].value = User.ProposedMass.toFixed(1) + " kg";
+    this.results[0].value = UserData.body.Bmr.toFixed() + " kcal";
+    this.results[1].value = UserData.body.Cpm.toFixed() + " kcal";
+    this.results[2].value = UserData.body.Weight.toFixed(1) + " kg";
+    this.results[3].value = UserData.body.ProposedMass.toFixed(1) + " kg";
 
-    this.foodResults[0].value = User.gProteins.toFixed() + " g (" + Number(User.FoodProportions.Protein * 100).toFixed() + "%)";
-    this.foodResults[1].value = User.gCarbohydrates.toFixed() + " g (" + Number(User.FoodProportions.Carbohydrates * 100).toFixed() + "%)";
-    this.foodResults[2].value = User.gFat.toFixed() + " g (" + Number(User.FoodProportions.Fat * 100).toFixed() + "%)";
+    this.foodResults[0].value = UserData.body.FoodProportions.gProteins.toFixed() + " g (" + Number(UserData.body.FoodProportions.Protein * 100).toFixed() + "%)";
+    this.foodResults[1].value = UserData.body.FoodProportions.gCarbohydrates.toFixed() + " g (" + Number(UserData.body.FoodProportions.Carbohydrates * 100).toFixed() + "%)";
+    this.foodResults[2].value = UserData.body.FoodProportions.gFat.toFixed() + " g (" + Number(UserData.body.FoodProportions.Fat * 100).toFixed() + "%)";
   }
 
 }
