@@ -33,6 +33,53 @@
 
 
     <div class="card-body">
+
+      <legend>Czy potrafisz pływać?:</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" [value]="true" [(ngModel)]="sport.CanSwim" checked="">Tak
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" [value]="false" [(ngModel)]="sport.CanSwim" checked="">Nie
+        </label>
+      </div>
+
+      <legend>Zaznacz przypadłości które cię dotyczą</legend>
+      <div class="form-check" *ngFor="let cpName of contraPartial; let i = index">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [checked]="cp[i]" (change)="cp[i] = !cp[i]"> {{cpName}}
+        </label>
+      </div>
+      <div class="form-check" *ngFor="let cpName of contra; let i = index">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [checked]="c[i]" (change)="c[i] = !c[i]"> {{cpName}}
+        </label>
+      </div>
+
+      <legend>Ilość wolnego czasu:</legend>
+      <p class="coment">Ilość czasu jaką jesteś w stanie przeznaczyć na przygotowanie posiłków</p>
+      <select class="form-control" [(ngModel)]="sport.Time">
+        <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
+      </select>
+
+      <legend>Gotówka:</legend>
+      <p class="coment">Jak wiele jesteś w stanie przeznaczyć na jedzenie</p>
+      <select class="form-control" [(ngModel)]="sport.Money">
+        <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
+      </select>
+
+
+      <legend>Zaangarzowanie:</legend>
+      <p class="coment">Jak bardzo jesteś zdeterminowany do przestrzegania diety</p>
+      <select class="form-control" [(ngModel)]="sport.Engagement">
+        <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
+      </select>
+
+    </div>
+
+    <div class="card-body">
       <button (click)="showResults()" class="btn btn-secondary btn-lg btn-block">Dobierz ćwiczenia</button>
     </div>
   </div>
