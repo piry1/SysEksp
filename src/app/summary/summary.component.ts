@@ -32,6 +32,7 @@ export class SummaryComponent implements OnInit {
   ngOnInit() {
     this.setTableResults();
     this.setChartValues();
+    window.scrollTo(0, 0);
   }
 
 

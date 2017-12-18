@@ -54,16 +54,17 @@ export class BmrComponent implements OnInit {
   canShowResults: boolean = false;
 
   ngOnInit() {
+    document.getElementById("top").scrollIntoView();
   }
 
   calcBmr() {
     this.user.countAllParams();
     UserData.body = this.user;
-
     this.showResults();
   }
 
   showResults() {
+    document.getElementById("results").scrollIntoView();
     this.canShowResults = true;
   }
 

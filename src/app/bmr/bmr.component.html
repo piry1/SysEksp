@@ -1,4 +1,4 @@
-<div class="container" style="padding: 30px">
+<div id="top" class="container" style="padding: 30px">
 
   <div class="card border-primary mb-3">
     <h3 class="card-header">Twoje zapotrzebowanie kaloryczne (BMR)</h3>
@@ -110,7 +110,7 @@
     </div>
   </div>
 
-
+  <span id="results"></span>
   <div *ngIf="canShowResults" class="card border-primary mb-3">
     <h3 class="card-header">Wyniki</h3>
     <app-bmr-results></app-bmr-results>

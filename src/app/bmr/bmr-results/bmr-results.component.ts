@@ -32,7 +32,6 @@ export class BmrResultsComponent implements OnInit {
   ];
 
   ngOnInit() {
-
     this.setChartValues();
     this.setTableResults();
   }

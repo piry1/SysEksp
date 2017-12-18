@@ -50,6 +50,7 @@ export class SportComponent implements OnInit {
   c: boolean[] = [];
 
   ngOnInit() {
+    document.getElementById("top").scrollIntoView();
     for (var i = 0; i < this.contraPartial.length; ++i)
       this.cp[i] = false;
     for (var i = 0; i < this.contra.length; ++i)
@@ -71,6 +72,7 @@ export class SportComponent implements OnInit {
   }
 
   showResults() {
+    document.getElementById("results").scrollIntoView();
     this.canShowResults = true;
   }
 

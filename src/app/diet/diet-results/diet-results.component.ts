@@ -14,7 +14,6 @@ export class DietResultsComponent implements OnInit {
   diet: Diet;
 
   ngOnInit() {
-  
     this.diet = UserData.diet;
   }
 

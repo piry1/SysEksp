@@ -39,6 +39,7 @@ export class DietComponent implements OnInit {
   allergy: boolean[] = [];
 
   ngOnInit() {
+    document.getElementById("top").scrollIntoView();
     for (var i = 0; i < this.allergies.length; ++i)
       this.allergy[i] = false;
   }
@@ -62,6 +63,7 @@ export class DietComponent implements OnInit {
     UserData.diet = this.diet;
     UserData.diet.countMeals();
     this.canShowResults = true;
+    document.getElementById("results") .scrollIntoView();
   }
 
   hideResults() {
