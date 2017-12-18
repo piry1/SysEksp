@@ -52,4 +52,8 @@ export class SummaryComponent implements OnInit {
     this.foodResults[1].value = UserData.body.FoodProportions.gCarbohydrates.toFixed() + " g (" + Number(UserData.body.FoodProportions.Carbohydrates * 100).toFixed() + "%)";
     this.foodResults[2].value = UserData.body.FoodProportions.gFat.toFixed() + " g (" + Number(UserData.body.FoodProportions.Fat * 100).toFixed() + "%)";
   }
+
+  printPage() {
+    window.print();
+  }
 }

@@ -25,7 +25,10 @@
     <app-sport-results></app-sport-results>
 
     <div class="card-body">
-      <button routerLink="/home" class="btn btn-info btn-lg btn-block">Powrót do strony głównej</button>
+      <button (click)="printPage()" class="btn btn-secondary btn-lg btn-block">
+        <i class="fa fa-print" aria-hidden="true"></i> Drukuj stronę</button>
+      <button routerLink="/home" class="btn btn-info btn-lg btn-block">
+        <i class="fa fa-home" aria-hidden="true"></i> Powrót do strony głównej </button>
     </div>
 
   </div>
