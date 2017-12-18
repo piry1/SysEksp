@@ -8,15 +8,33 @@ export class Diet {
     Money: Degree = Degree.Medium;
     Engagement: Degree = Degree.Medium;
 
+    MeelCount: number = 0;
     bPropositions: string[] = [];
     sPropositions: string[] = [];
+    mPropositions: string[] = [];
 
     countMeals() {
+
+        var te = Number(this.Time) + Number(this.Engagement);
+        if (te < 2)
+            this.MeelCount = 1;
+        else if (te < 3)
+            this.MeelCount = 2;
+        else if (te < 4)
+            this.MeelCount = 3;
+        else
+            this.MeelCount = 4;
+
+        var k = 3 / this.MeelCount;
+
         this.bPropositions = [];
         this.sPropositions = [];
+        this.mPropositions = [];
 
         var b = UserData.body;
         var m = ((b.Weight - 5) * b.Cpm) / b.Bmr;
+
+        //#region Brekfast
 
         var i = 0;
 
@@ -52,7 +70,49 @@ export class Diet {
         this.bPropositions[i] = "mix(" + ((300 / 70) * m).toFixed() + "ml soku z marchwi + " + ((100 / 70) * m).toFixed() + "ml soku z buraków). Soki jednodiowe z krotkim terminem do spożycia."
         ++i;
 
-        // Supper 
+        //#endregion
+
+        //#region Meals in the middle
+
+        i = 0;
+
+        if (this.FoodPreferences == FoodPref.All) {
+            this.mPropositions[i] = ((90 / 70) * m * k).toFixed() + "-" + ((100 / 70) * m * k).toFixed() + "gr mięsa(piers kurczaka, indyk, cielecina, wolowina) " +
+                ((!this.Allergy.Fish) ? "lub ryby (panga, sola, tilapia, dorsz, mintaj, losos) " : "") +
+                "zrobionych na patelni teflonowej bez tłuszczu z delikatnym dodatkiem wody lub " +
+                "specjalnym sprayu do smażenia (Do przygotowania można używać przypraw - papryka słodka, curry vegeta itp). | | Do tego jedno z poniższych: ||" +
+                " - " + ((50 / 70) * m * k).toFixed() + "gr makaronu zytniego razowego |" +
+                " - " + ((50 / 70) * m * k).toFixed() + "gr ryżu brązowego|" +
+                " - " + ((50 / 70) * m * k).toFixed() + "gr ryżu basmati lub kaszy gryczanej, jaglanej lub pęczak|" +
+                " - " + ((4 / 70) * m * k).toFixed() + "-" + ((5 / 70) * m * k).toFixed() + " kromek pieczywa Wasa|" +
+                " - " + ((170 / 70) * m * k).toFixed() + "-" + ((200 / 70) * m * k).toFixed() + "gr ziemniaków w mundurkach (polskich lub słodkich typu Bataty) (ziemniaki raz na 2 dni nie czesciej)";
+            i++;
+        }
+
+
+        this.mPropositions[i] = ((50 / 70) * m * k).toFixed() + "gram ciecierzycy/soczewicy lub " + ((2 / 70) * m * k).toFixed() + "-" + ((3 / 70) * m * k).toFixed() +
+            " koltlety sojowe lub " + ((100 / 70) * m).toFixed() + "gram tofu.  | | Do tego jedno z poniższych: ||" +
+            " - " + ((50 / 70) * m * k).toFixed() + "gr makaronu zytniego razowego |" +
+            " - " + ((50 / 70) * m * k).toFixed() + "gr ryżu brązowego|" +
+            " - " + ((50 / 70) * m * k).toFixed() + "gr ryżu basmati lub kaszy gryczanej, jaglanej lub pęczak|" +
+            " - " + ((4 / 70) * m * k).toFixed() + "-" + ((5 / 70) * m * k).toFixed() + " kromek pieczywa Wasa|" +
+            " - " + ((170 / 70) * m * k).toFixed() + "-" + ((200 / 70) * m * k).toFixed() + "gr ziemniaków w mundurkach (polskich lub słodkich typu Bataty) (ziemniaki raz na 2 dni nie czesciej)";
+        i++;
+
+
+        this.mPropositions[i] = "Zupa krem np: |" +
+            " - " + ((50 / 70) * m * k).toFixed() + " gram soczewicy zielonej |" +
+            " - " + ((170 / 70) * m * k).toFixed() + "-" + ((200 / 70) * m * k).toFixed() + " gram batatów |" +
+            " - " + " cebulka |" +
+            " - " + ((0.5 / 70) * m * k).toFixed(1) + " puszki pomidorów albo przecieru |" +
+            " - " + "łyżeczka żółtej pasty curry |" +
+            " - " + "odrobina vegety |" +
+            "Wszystko razem gotujesz 20-25min i jak wystygnie troszceczke to blendujesz na mase.";
+        i++;
+
+        //#endregion
+
+        //#region Supper 
         i = 0;
 
         if (!this.Allergy.Milk && this.FoodPreferences != FoodPref.Vegan) {
@@ -89,6 +149,8 @@ export class Diet {
             this.sPropositions[i] = ((60 / 70) * m).toFixed() + "gr twarogu chudego + " + ((30 / 70) * m).toFixed() + "gr masła orzechowego które ma w składzie minimum 90% orzechów."
             ++i;
         }
+
+        //#endregion
     }
 
 }

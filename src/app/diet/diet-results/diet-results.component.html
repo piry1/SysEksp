@@ -14,19 +14,65 @@
     </tbody>
   </table>
 
+
+  <h4 *ngIf="diet.MeelCount == 1">Obiad</h4>
+  <span *ngIf="diet.MeelCount > 1">
+    <h4>{{diet.MeelCount}} posiłki pośrednie</h4>
+    <h6>
+      <br>Te posiłki w ciagu dnia będą miały podobne wartości więc możesz wybierać co zjesz w danej chwili.
+      <br>
+    </h6>
+  </span>
+
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th style="width: 10px" scope="row">Propozycja</th>
+        <th scope="row">Przepis</th>
+      </tr>
+      <tr *ngFor="let result of diet.mPropositions; let i = index">
+        <th style="width: 10px" scope="row">{{i + 1}}</th>
+        <td>
+          <span *ngFor="let r of result.split('|')"> {{r}}
+            <br>
+          </span>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <h4>Kolacja</h4>
 
   <table class="table table-hover">
-      <tbody>
-        <tr>
-          <th style="width: 10px" scope="row">Propozycja</th>
-          <th scope="row">Przepis</th>
-        </tr>
-        <tr *ngFor="let result of diet.sPropositions; let i = index">
-          <th style="width: 10px" scope="row">{{i + 1}}</th>
-          <td>{{result}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <tbody>
+      <tr>
+        <th style="width: 10px" scope="row">Propozycja</th>
+        <th scope="row">Przepis</th>
+      </tr>
+      <tr *ngFor="let result of diet.sPropositions; let i = index">
+        <th style="width: 10px" scope="row">{{i + 1}}</th>
+        <td>{{result}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>Uwagi</h4>
+
+  <div class="list-group">
+
+    <p class="list-group-item list-group-item-action">Warzywa możesz jeść do każdego posiłku np. pomidor , papryka, sałata. Poprawiają one prace jelit. Do tego odrobina ocetu
+      balsamicznyego.
+    </p>
+    <p class="list-group-item list-group-item-action">
+      Owoce możesz dodawać tylko do śniadania i posiłku przed treningiem (ananas, banan, truskawki).</p>
+    <p class="list-group-item list-group-item-action">Do przygotowanego posiłku możesz dodawać delikatnie ketchupu. Można używać pomidorów z puszki. Do przyprawiania na razie
+      mozesz stosowac wszelakie przyprawy. Do potraw mozna dodawac, musztarde oraz sosy warzywne wlasnej roboty z dowolnymi
+      przyprawami.
+    </p>
+    <p class="list-group-item list-group-item-action">Pij dużo wody niegazowanej. Można pić wodę, kawe i herbaty (bez cukru lub ze słodzikiem), colę zero i pepsi max...nie
+      pepsi light bo ma dużo sodu który zatrzymuje wodę w organizmie.</p>
+  </div>
+
 
 </div>
