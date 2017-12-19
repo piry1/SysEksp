@@ -73,6 +73,8 @@ export class SportComponent implements OnInit {
 
   showResults() {
     document.getElementById("results").scrollIntoView();
+    this.setUserData();
+    UserData.sport.setTraining();
     this.canShowResults = true;
   }
 

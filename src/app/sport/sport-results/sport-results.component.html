@@ -1,4 +1,29 @@
 <div class="card-body">
-  <h4>Ćwiczenia</h4>
+  <h4>Rodzaj ćwiczeń</h4>
+  <p>
+    <span *ngFor="let r of sport.sProposition.split('|')"> {{r}}
+      <br>
+    </span>
+  </p>
+
+  <h4>Przykładowe ćwiczenia</h4>
+
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th style="width: 10px" scope="row">Lp</th>
+        <th scope="row">Propozycja</th>
+      </tr>
+      <tr *ngFor="let result of sport.sExercises; let i = index">
+
+        <th *ngIf="result.indexOf(':') == -1" style="width: 10px" scope="row">{{i + 1}}</th>
+        <td *ngIf="result.indexOf(':') == -1">{{result}}</td>
+
+        <th *ngIf="result.indexOf(':') != -1" style="width: 10px" scope="row">*</th>
+        <th *ngIf="result.indexOf(':') != -1">{{result}}</th>
+
+      </tr>
+    </tbody>
+  </table>
 
 </div>
