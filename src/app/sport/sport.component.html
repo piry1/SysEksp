@@ -59,20 +59,20 @@
       </div>
 
       <legend>Ilość wolnego czasu:</legend>
-      <p class="coment">Ilość czasu jaką jesteś w stanie przeznaczyć na przygotowanie posiłków</p>
+      <p class="coment">Ilość czasu jaką jesteś w stanie przeznaczyć na ćwiczenia fizyczne</p>
       <select class="form-control" [(ngModel)]="sport.Time">
         <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
       </select>
 
       <legend>Gotówka:</legend>
-      <p class="coment">Jak wiele jesteś w stanie przeznaczyć na jedzenie</p>
+      <p class="coment">Jak wiele jesteś w stanie przeznaczyć na ćwiczenia (siłownia, basen)</p>
       <select class="form-control" [(ngModel)]="sport.Money">
         <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
       </select>
 
 
       <legend>Zaangarzowanie:</legend>
-      <p class="coment">Jak bardzo jesteś zdeterminowany do przestrzegania diety</p>
+      <p class="coment">Jak bardzo jesteś zdeterminowany do wykonywania ćwiczeń</p>
       <select class="form-control" [(ngModel)]="sport.Engagement">
         <option *ngFor="let s of scale; let i = index" [value]="i">{{s}}</option>
       </select>
